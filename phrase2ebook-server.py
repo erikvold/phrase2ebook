@@ -7,8 +7,8 @@ Created on Wed Sep  7 18:44:35 2016
 import subprocess
 import os
 import psutil
-from flask import Flask
-from flask import request
+from flask import Flask, request, send_from_directory, send_file
+
 from two1.wallet import Wallet
 from two1.bitserv.flask import Payment
 
@@ -24,8 +24,10 @@ def buy_bookbuild():
     key1 = str(request.args.get('key1'))
     command =  ['/home/fred/pagekicker-community/test/phrase2ebook-build.sh', key1]
     status = subprocess.check_call(command, cwd='/home/fred/pagekicker-community/scripts')
-    status = 'exiting with status ' + str(status)
-    return status
+    status = ('exiting with status ' + str(status))
+    # print(status)
+    return send_from_directory('/tmp/pagekicker/', 'test.epub')
+
 
 # Initialize and run the server
 if __name__ == '__main__':
