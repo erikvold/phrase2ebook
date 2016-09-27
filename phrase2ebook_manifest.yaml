@@ -1,0 +1,54 @@
+basePath: /
+definitions:
+  InvalidInput:
+    properties:
+      error: {type: string}
+    type: object
+  ProcessingError:
+    properties:
+      error: {type: string}
+    type: object
+host: '[fcce:a977:eef0:ac6d:2715:0000:0000:0001]:5009'
+info:
+  contact: {email: fred@PageKicker.com, name: Fred Zimmerman, url: 'https://www.PageKicker.com'}
+  description: Submit a single key phrase and receive a 10-100 page ebook on the topic.
+  license: {name: PageKicker Terms of Use, url: 'http://www.pagekicker.com/index.php/terms-conditions'}
+  termsOfService: http://www.pagekicker.com/index.php/terms-conditions
+  title: phrase2ebook
+  version: 0.8.0
+  x-21-app-image: null
+  x-21-category: entertainment
+  x-21-github-profile-url: ''
+  x-21-github-project-url: ''
+  x-21-keywords: [literature, research, nonfiction, books, ebooks]
+  x-21-quick-buy: $ 21 buy "http://[fcce:a977:eef0:ac6d:2715:0000:0000:0001]:5009/bookbuild?key1=Neil+Armstrong" > ~/myneilarmstrongbook.epub
+  x-21-total-price: {max: 10000, min: 10000}
+  x-21-usage: null
+parameters:
+  htmlParam:
+    description: html
+    in: body
+    name: html
+    required: true
+    schema:
+      properties:
+        html: {type: string}
+  textParam:
+    description: text
+    in: body
+    name: text
+    required: true
+    schema:
+      properties:
+        text: {type: string}
+  urlParam:
+    description: url
+    in: body
+    name: url
+    required: true
+    schema:
+      properties:
+        url: {type: string}
+schemes: [https]
+swagger: '2.0'
+x-21-manifest-path: /manifest
