@@ -7,10 +7,7 @@ Created on Wed Sep  7 18:44:35 2016
 import subprocess
 import os
 import psutil
-from flask import Flask, request, send_from_directory, send_file
-import subprocess
-import os
-import psutil
+from flask import Flask, request, send_from_directory
 import configparser
 config = configparser.ConfigParser()
 config.read("config.ini")
