@@ -24,16 +24,17 @@ app = Flask(__name__)
 wallet = Wallet()
 payment = Payment(app, wallet)
 
-@app.route('/bookbuild', methods=['GET', 'POST'])
+@app.route('/buy', methods=['GET', 'POST'])
 @payment.required(10000)
 def buy_bookbuild():
 
     key1 = str(request.args.get('key1'))
-    command =  [ commandpath, key1]
+    key2 = key1
+    command =  [ commandpath, key1, key2, "default"]
     status = subprocess.check_call(command, cwd = mycwd)
     status = ('exiting with status ' + str(status))
     # print(status)
-    return send_from_directory('/tmp/pagekicker/', 'test.epub')
+    return send_from_directory('/tmp/pagekicker/', 'delivery.epub')
 
 
 # Initialize and run the server
