@@ -64,5 +64,5 @@ if __name__ == '__main__':
                     raise ValueError("error starting phrase2-ebook.py daemon")
             else:
                 print("phrase2-ebook running...")
-                app.run(host='::', port=5009, debug=True)
+                app.run(host='::', port=5034, debug=True)
    run()
