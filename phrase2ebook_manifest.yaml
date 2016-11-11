@@ -21,7 +21,7 @@ info:
   x-21-github-profile-url: ''
   x-21-github-project-url: ''
   x-21-keywords: [literature, research, nonfiction, books, ebooks]
-  x-21-quick-buy: $ 21 buy "http://[fcce:a977:eef0:ac6d:2715:0000:0000:0001]:5034/bookbuild?key1=Neil+Armstrong"
+  x-21-quick-buy: $ 21 buy "http://[fcce:a977:eef0:ac6d:2715:0000:0000:0001]:5034/buy?key1=Neil+Armstrong"
     > ~/myneilarmstrongbook.epub
   x-21-total-price: {max: 10000, min: 10000}
   x-21-usage: null
