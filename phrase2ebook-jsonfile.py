@@ -64,14 +64,17 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            filename = (os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            with open('/tmp/pagekicker/test.json') as json_data:
+            filename = str((os.path.join(app.config['UPLOAD_FOLDER'], filename)))
+            with open(filename) as json_data:
                 d = json.load(json_data)
-                s = ""
-                for k,v in d['options'].items():
-                    s += (2*"{} ").format(k, v)
-                    print(s)
-    return s
+                s = ' '.join( '{} "{}"'.format(k, v) for k,v in d['options'].items() )
+
+        cli = commandpath + ' ' + s
+        print('command line will be' + ' ' + cli)
+        args = shlex.split(cli)
+        print(args)
+        status = subprocess.check_output(args, cwd = mycwd)
+        return send_from_directory('/tmp/pagekicker/', '4stdout.txt')
 
 # Initialize and run the server
 if __name__ == '__main__':
