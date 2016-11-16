@@ -7,10 +7,7 @@ Created on Wed Sep  7 18:44:35 2016
 import subprocess
 import os
 import psutil
-import json
-import shlex
 from flask import Flask, request, send_from_directory
-
 import configparser
 config = configparser.ConfigParser()
 config.read("config.ini")
@@ -29,19 +26,14 @@ payment = Payment(app, wallet)
 
 @app.route('/buy', methods=['GET', 'POST'])
 @payment.required(10000)
-
-
 def buy_bookbuild():
 
-    flags = json.loads(request.data.decode('UTF-8'))
-    print('options received are ' + flags['options'])
-    optvalue = str(flags['options'])
-    optvalue = commandpath + ' ' + optvalue
-    print('command line will be ' + optvalue)
-    args = shlex.split(optvalue)
-    print(args)
-    status = subprocess.check_output(args, cwd = mycwd)
-    return status, send_from_directory('/tmp/pagekicker/', '4stdout.txt')
+    key1 = str(request.args.get('key1'))
+    command =  [ commandpath, '-S', key1]
+    status = subprocess.check_call(command, cwd = mycwd)
+    status = ('exiting with status ' + str(status))
+    # print(status)
+    return send_from_directory('/tmp/pagekicker/', 'delivery.epub')
 
 
 # Initialize and run the server
