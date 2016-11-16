@@ -29,8 +29,7 @@ payment = Payment(app, wallet)
 def buy_bookbuild():
 
     key1 = str(request.args.get('key1'))
-    key2 = key1
-    command =  [ commandpath, key1, key2, "default"]
+    command =  [ commandpath, '-S', key1]
     status = subprocess.check_call(command, cwd = mycwd)
     status = ('exiting with status ' + str(status))
     # print(status)
